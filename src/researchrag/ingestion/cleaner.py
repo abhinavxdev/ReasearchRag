@@ -1,6 +1,7 @@
 """Conservative removal of repeated margin lines and line-wrap hyphenation."""
 
 import re
+import unicodedata
 from collections import Counter
 
 
@@ -26,7 +27,8 @@ def clean_pages(pages: list[str]) -> list[str]:
                 and (line.strip() in repeated or re.fullmatch(r"\s*\d+\s*", line))
             )
         ]
-        text = "\n".join(keep).replace("\x00", "")
+        text = unicodedata.normalize("NFKC", "\n".join(keep).replace("\x00", ""))
         text = re.sub(r"(\w)-\s*\n\s*([a-z])", r"\1\2", text)
+        text = re.sub(r"(?m)^\s*(\d+(?:\.\d+)*)\s*\n\s*([A-Z][A-Za-z -]{2,65})\s*$", r"\1 \2", text)
         result.append(text)
     return result

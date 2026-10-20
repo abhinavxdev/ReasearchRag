@@ -1,0 +1,33 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      RESEARCHRAG_DATA_DIR: /app/data
+      RESEARCHRAG_OLLAMA_URL: http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - researchrag-data:/app/data
+      - model-cache:/home/app/.cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  ui:
+    build: .
+    command: ["streamlit", "run", "ui/app.py", "--server.address", "0.0.0.0", "--browser.gatherUsageStats", "false"]
+    environment:
+      RESEARCHRAG_API_URL: http://api:8000
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+volumes:
+  researchrag-data:
+  model-cache:

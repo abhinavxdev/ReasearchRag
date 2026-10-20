@@ -39,3 +39,22 @@ def test_arxiv_validation():
     assert parse_id("hep-th/9901001") == "hep-th/9901001"
     with pytest.raises(ResearchError):
         parse_id("https://evil.test/1706.03762")
+
+
+def test_two_column_reading_order():
+    import pymupdf
+
+    from researchrag.ingestion.pdf import page_text
+
+    doc = pymupdf.open()
+    page = doc.new_page(width=600, height=800)
+    for x, y, text in [
+        (50, 60, "Left first"),
+        (50, 130, "Left second"),
+        (330, 60, "Right first"),
+        (330, 130, "Right second"),
+    ]:
+        page.insert_text((x, y), text)
+    text = page_text(page)
+    assert text.index("Left second") < text.index("Right first")
+    doc.close()

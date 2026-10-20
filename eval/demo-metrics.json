@@ -1,0 +1,8 @@
+{
+  "questions": 3,
+  "answered": 3,
+  "citation_count": 3,
+  "valid_citations": 3,
+  "citation_validity_rate": 1.0,
+  "note": "Provenance checked against SQLite after final re-ingestion; not a semantic correctness metric. Manual review: Adam, 4000 warmup steps, 15% masking are supported."
+}

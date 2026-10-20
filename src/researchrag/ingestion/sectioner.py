@@ -31,7 +31,9 @@ def sections(pages: list[str]) -> list[Section]:
     for page, text in enumerate(pages, 1):
         lines: list[str] = []
         for line in text.splitlines():
-            match = HEADING.fullmatch(line) or NUMBERED.fullmatch(line)
+            match = HEADING.fullmatch(line) or (
+                NUMBERED.fullmatch(line) if name not in {"References", "Bibliography"} else None
+            )
             if match:
                 if "\n".join(lines).strip():
                     result.append(Section(page, name, "\n".join(lines).strip()))

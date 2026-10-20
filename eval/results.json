@@ -1,0 +1,456 @@
+{
+  "questions": 12,
+  "k": 6,
+  "retrieval_hit_rate_at_k": 0.9166666666666666,
+  "citation_validity_rate": null,
+  "citation_count": 0,
+  "answered": null,
+  "answer_coverage": null,
+  "metric_note": "Citation validity is provenance only, not entailment. Null means no citations evaluated. Retrieval uses gold phrase proxies.",
+  "rows": [
+    {
+      "question": "Which optimizer was used to train the Transformer?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "4d5450091387acb393f07768",
+          "page": 7,
+          "section": "Optimizer"
+        },
+        {
+          "id": "f11a5d73ec703d4ee839f5f2",
+          "page": 8,
+          "section": "Regularization"
+        },
+        {
+          "id": "842ba8d54c52ade93037fd27",
+          "page": 10,
+          "section": "Conclusion"
+        },
+        {
+          "id": "47d1da35cf901804822e6306",
+          "page": 1,
+          "section": "Abstract"
+        },
+        {
+          "id": "ffd36ee078040b4b337b89de",
+          "page": 8,
+          "section": "Regularization"
+        },
+        {
+          "id": "9780cadb994e036738308b86",
+          "page": 8,
+          "section": "Model Variations"
+        }
+      ]
+    },
+    {
+      "question": "How many learning rate warmup steps were used?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "4d5450091387acb393f07768",
+          "page": 7,
+          "section": "Optimizer"
+        },
+        {
+          "id": "c76341e2171a45aea5801dcd",
+          "page": 7,
+          "section": "Hardware And Schedule"
+        },
+        {
+          "id": "f11a5d73ec703d4ee839f5f2",
+          "page": 8,
+          "section": "Regularization"
+        },
+        {
+          "id": "124bb2789edeed077181712d",
+          "page": 7,
+          "section": "Training Data And Batching"
+        },
+        {
+          "id": "ffd36ee078040b4b337b89de",
+          "page": 8,
+          "section": "Regularization"
+        },
+        {
+          "id": "bd63e6174d2d0ec1b29d2424",
+          "page": 9,
+          "section": "Model Variations"
+        }
+      ]
+    },
+    {
+      "question": "How does scaled dot product attention normalize the attention scores?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "f3f5ec92e2bbdcf5f1d37965",
+          "page": 4,
+          "section": "Attention"
+        },
+        {
+          "id": "d36793f3b876acb62482c249",
+          "page": 4,
+          "section": "Scaled Dot-Product Attention"
+        },
+        {
+          "id": "4ab23d7e8f6a3b3e6569692e",
+          "page": 5,
+          "section": "Applications Of Attention In Our Model"
+        },
+        {
+          "id": "7f3ba5b333902d6238ca4d68",
+          "page": 4,
+          "section": "Multi-Head Attention"
+        },
+        {
+          "id": "bd63e6174d2d0ec1b29d2424",
+          "page": 9,
+          "section": "Model Variations"
+        },
+        {
+          "id": "41714b6ba907da5701682f59",
+          "page": 5,
+          "section": "Multi-Head Attention"
+        }
+      ]
+    },
+    {
+      "question": "How many attention heads are used in the base model?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "bd63e6174d2d0ec1b29d2424",
+          "page": 9,
+          "section": "Model Variations"
+        },
+        {
+          "id": "41714b6ba907da5701682f59",
+          "page": 5,
+          "section": "Multi-Head Attention"
+        },
+        {
+          "id": "293fe13431e433d64f7845db",
+          "page": 7,
+          "section": "Why Self-Attention"
+        },
+        {
+          "id": "bbc4d71fb14e2e8c4015986f",
+          "page": 6,
+          "section": "Why Self-Attention"
+        },
+        {
+          "id": "4ab23d7e8f6a3b3e6569692e",
+          "page": 5,
+          "section": "Applications Of Attention In Our Model"
+        },
+        {
+          "id": "51779da675e0531bbf1e463b",
+          "page": 2,
+          "section": "Background"
+        }
+      ]
+    },
+    {
+      "question": "What are the positional encodings made from?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "0701c12b79fa1247b3af3f46",
+          "page": 6,
+          "section": "Positional Encoding"
+        },
+        {
+          "id": "bd63e6174d2d0ec1b29d2424",
+          "page": 9,
+          "section": "Model Variations"
+        },
+        {
+          "id": "4ab23d7e8f6a3b3e6569692e",
+          "page": 5,
+          "section": "Applications Of Attention In Our Model"
+        },
+        {
+          "id": "5d3f93997f67bd382ac046f2",
+          "page": 3,
+          "section": "Encoder And Decoder Stacks"
+        },
+        {
+          "id": "29ae3be04774dde0fcc16125",
+          "page": 5,
+          "section": "Position-Wise Feed-Forward Networks"
+        },
+        {
+          "id": "f66239ea5381cb352361fb81",
+          "page": 9,
+          "section": "English Constituency Parsing"
+        }
+      ]
+    },
+    {
+      "question": "Why is masking used in decoder self-attention?",
+      "paper": "1706.03762",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "4ab23d7e8f6a3b3e6569692e",
+          "page": 5,
+          "section": "Applications Of Attention In Our Model"
+        },
+        {
+          "id": "5d3f93997f67bd382ac046f2",
+          "page": 3,
+          "section": "Encoder And Decoder Stacks"
+        },
+        {
+          "id": "bbc4d71fb14e2e8c4015986f",
+          "page": 6,
+          "section": "Why Self-Attention"
+        },
+        {
+          "id": "51779da675e0531bbf1e463b",
+          "page": 2,
+          "section": "Background"
+        },
+        {
+          "id": "842ba8d54c52ade93037fd27",
+          "page": 10,
+          "section": "Conclusion"
+        },
+        {
+          "id": "293fe13431e433d64f7845db",
+          "page": 7,
+          "section": "Why Self-Attention"
+        }
+      ]
+    },
+    {
+      "question": "What are the two BERT pre-training tasks?",
+      "paper": "1810.04805",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "315323b92ed78010ca523b59",
+          "page": 2,
+          "section": "Introduction"
+        },
+        {
+          "id": "a2772ad536a011ebf6581e26",
+          "page": 1,
+          "section": "Introduction"
+        },
+        {
+          "id": "defb4b78aa7da5a2c3855be0",
+          "page": 12,
+          "section": "References"
+        },
+        {
+          "id": "d39c8ffe36602951d51a1733",
+          "page": 14,
+          "section": "Approach"
+        },
+        {
+          "id": "9f2d9946a393ef32facac455",
+          "page": 5,
+          "section": "Fine-Tuning Bert"
+        },
+        {
+          "id": "0917aa2b616142d300ab32a8",
+          "page": 3,
+          "section": "Unsupervised Fine-Tuning Approaches"
+        }
+      ]
+    },
+    {
+      "question": "What fraction of WordPiece tokens is selected for masked language modeling?",
+      "paper": "1810.04805",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "a2e2fc24e72189b57db31786",
+          "page": 4,
+          "section": "Pre-Training Bert"
+        },
+        {
+          "id": "c3c41a7ecfe5fd7b1d88652c",
+          "page": 13,
+          "section": "References"
+        },
+        {
+          "id": "c60bdc80840fe28a9a9ec3db",
+          "page": 1,
+          "section": "Introduction"
+        },
+        {
+          "id": "85f060cdb6741cdb84b47b4e",
+          "page": 13,
+          "section": "References"
+        },
+        {
+          "id": "defb4b78aa7da5a2c3855be0",
+          "page": 12,
+          "section": "References"
+        },
+        {
+          "id": "3d59e577096cdc8afc90fed0",
+          "page": 16,
+          "section": "Question: Does Mlm Pre-Training Converge"
+        }
+      ]
+    },
+    {
+      "question": "How many transformer layers does BERT BASE have?",
+      "paper": "1810.04805",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "2d7632c5c56782c50d698a69",
+          "page": 9,
+          "section": "Feature-Based Approach With Bert"
+        },
+        {
+          "id": "d18db0f2ef1aba86875179ea",
+          "page": 3,
+          "section": "Bert"
+        },
+        {
+          "id": "defb4b78aa7da5a2c3855be0",
+          "page": 12,
+          "section": "References"
+        },
+        {
+          "id": "dbfcd087aa5e79099de7841c",
+          "page": 8,
+          "section": "Effect Of Model Size"
+        },
+        {
+          "id": "0b5d3012eca1a4025426ed4f",
+          "page": 16,
+          "section": "Question:"
+        },
+        {
+          "id": "c3c41a7ecfe5fd7b1d88652c",
+          "page": 13,
+          "section": "References"
+        }
+      ]
+    },
+    {
+      "question": "What vocabulary size does BERT use for WordPiece embeddings?",
+      "paper": "1810.04805",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "ebeea35bd6b85b0525b2d8c3",
+          "page": 4,
+          "section": "Bert"
+        },
+        {
+          "id": "80e66fd6d78283b718b46f5a",
+          "page": 5,
+          "section": "Pre-Training Bert"
+        },
+        {
+          "id": "2d7632c5c56782c50d698a69",
+          "page": 9,
+          "section": "Feature-Based Approach With Bert"
+        },
+        {
+          "id": "85f060cdb6741cdb84b47b4e",
+          "page": 13,
+          "section": "References"
+        },
+        {
+          "id": "c3c41a7ecfe5fd7b1d88652c",
+          "page": 13,
+          "section": "References"
+        },
+        {
+          "id": "73a848434f4528432c00cd6b",
+          "page": 6,
+          "section": "Bertlarge"
+        }
+      ]
+    },
+    {
+      "question": "How are sentence pairs constructed for next sentence prediction?",
+      "paper": "1810.04805",
+      "retrieval_hit": true,
+      "retrieved": [
+        {
+          "id": "72864fcbabd8ce28bc45f234",
+          "page": 4,
+          "section": "Pre-Training Bert"
+        },
+        {
+          "id": "c3c41a7ecfe5fd7b1d88652c",
+          "page": 13,
+          "section": "References"
+        },
+        {
+          "id": "ebeea35bd6b85b0525b2d8c3",
+          "page": 4,
+          "section": "Bert"
+        },
+        {
+          "id": "9f2d9946a393ef32facac455",
+          "page": 5,
+          "section": "Fine-Tuning Bert"
+        },
+        {
+          "id": "1c01fe19f13a1f33882d7692",
+          "page": 15,
+          "section": "Results"
+        },
+        {
+          "id": "315323b92ed78010ca523b59",
+          "page": 2,
+          "section": "Introduction"
+        }
+      ]
+    },
+    {
+      "question": "What optimizer is used for BERT pre-training?",
+      "paper": "1810.04805",
+      "retrieval_hit": false,
+      "retrieved": [
+        {
+          "id": "0917aa2b616142d300ab32a8",
+          "page": 3,
+          "section": "Unsupervised Fine-Tuning Approaches"
+        },
+        {
+          "id": "315323b92ed78010ca523b59",
+          "page": 2,
+          "section": "Introduction"
+        },
+        {
+          "id": "defb4b78aa7da5a2c3855be0",
+          "page": 12,
+          "section": "References"
+        },
+        {
+          "id": "a2772ad536a011ebf6581e26",
+          "page": 1,
+          "section": "Introduction"
+        },
+        {
+          "id": "3d59e577096cdc8afc90fed0",
+          "page": 16,
+          "section": "Question: Does Mlm Pre-Training Converge"
+        },
+        {
+          "id": "d39c8ffe36602951d51a1733",
+          "page": 14,
+          "section": "Approach"
+        }
+      ]
+    }
+  ]
+}

@@ -7,3 +7,7 @@ __pycache__/
 .env
 data/
 *.egg-info/
+.playwright-cli/
+
+dist/
+build/

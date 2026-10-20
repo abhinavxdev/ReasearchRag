@@ -1,0 +1,14 @@
+[
+ {"paper":"1706.03762","question":"Which optimizer was used to train the Transformer?","expected":["Adam"],"answer":"Adam"},
+ {"paper":"1706.03762","question":"How many learning rate warmup steps were used?","expected":["4000"],"answer":"4000"},
+ {"paper":"1706.03762","question":"How does scaled dot product attention normalize the attention scores?","expected":["softmax"],"answer":"Softmax of scaled query-key dot products"},
+ {"paper":"1706.03762","question":"How many attention heads are used in the base model?","expected":["h = 8","8 parallel"],"answer":"8"},
+ {"paper":"1706.03762","question":"What are the positional encodings made from?","expected":["sine","sinusoid"],"answer":"Sine and cosine functions of different frequencies"},
+ {"paper":"1706.03762","question":"Why is masking used in decoder self-attention?","expected":["subsequent","future"],"answer":"To prevent positions from attending to subsequent positions"},
+ {"paper":"1810.04805","question":"What are the two BERT pre-training tasks?","expected":["masked","next sentence"],"answer":"Masked language modeling and next sentence prediction"},
+ {"paper":"1810.04805","question":"What fraction of WordPiece tokens is selected for masked language modeling?","expected":["15%","15 %"],"answer":"15 percent"},
+ {"paper":"1810.04805","question":"How many transformer layers does BERT BASE have?","expected":["L=12","L = 12"],"answer":"12"},
+ {"paper":"1810.04805","question":"What vocabulary size does BERT use for WordPiece embeddings?","expected":["30,000","30000"],"answer":"30000"},
+ {"paper":"1810.04805","question":"How are sentence pairs constructed for next sentence prediction?","expected":["50%","50 %"],"answer":"Half true next sentences and half random sentences"},
+ {"paper":"1810.04805","question":"What optimizer is used for BERT pre-training?","expected":["Adam"],"answer":"Adam"}
+]

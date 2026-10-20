@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Which optimizer did the Transformer use?",
+    "answer": "We used the Adam optimizer (20) with \u03b21 = 0.9, \u03b22 = 0.98 and \u03b5 = 10\u22129 [Attention Is All You Need, p.7, Optimizer].",
+    "citations": [
+      {
+        "source_id": "S_4d5450091387acb393f07768",
+        "paper_id": "a841f955cd7d42b6ab611df234a69b9d",
+        "title": "Attention Is All You Need",
+        "page": 7,
+        "section": "Optimizer",
+        "snippet": "We used the Adam optimizer [20] with \u03b21 = 0.9, \u03b22 = 0.98 and \u03b5 = 10\u22129. We varied the learning\nrate over the course of training, according to the formula:\n\n             lrate = d\u22120.5model \u00b7 min(step_num\u22120.5, step_num \u00b7 warmup_steps\u22121.5)           (3)\n\nThis corresponds to increasing the learning rate linearly for the first warmup_steps training steps,\nand decreasing it thereafter proportionally to the inverse square root of the step number. We used\nwarmup_steps = 4000."
+      }
+    ],
+    "refused": false,
+    "warnings": []
+  },
+  {
+    "question": "How many learning rate warmup steps were used?",
+    "answer": "We used warmup_steps = 4000 [Attention Is All You Need, p.7, Optimizer].",
+    "citations": [
+      {
+        "source_id": "S_4d5450091387acb393f07768",
+        "paper_id": "a841f955cd7d42b6ab611df234a69b9d",
+        "title": "Attention Is All You Need",
+        "page": 7,
+        "section": "Optimizer",
+        "snippet": "We used the Adam optimizer [20] with \u03b21 = 0.9, \u03b22 = 0.98 and \u03b5 = 10\u22129. We varied the learning\nrate over the course of training, according to the formula:\n\n             lrate = d\u22120.5model \u00b7 min(step_num\u22120.5, step_num \u00b7 warmup_steps\u22121.5)           (3)\n\nThis corresponds to increasing the learning rate linearly for the first warmup_steps training steps,\nand decreasing it thereafter proportionally to the inverse square root of the step number. We used\nwarmup_steps = 4000."
+      }
+    ],
+    "refused": false,
+    "warnings": []
+  },
+  {
+    "question": "What percentage of WordPiece tokens is masked during BERT pre-training?",
+    "answer": "In all of our experiments, we mask 15% of all WordPiece tokens in each sequence at random [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding, p.4, Pre-Training Bert].",
+    "citations": [
+      {
+        "source_id": "S_a2e2fc24e72189b57db31786",
+        "paper_id": "64501ccf176b493db1a377b08bdd3e88",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "page": 4,
+        "section": "Pre-Training Bert",
+        "snippet": "Unlike Peters et al. (2018a) and Radford et al.\n(2018), we do not use traditional left-to-right or\nright-to-left language models to pre-train BERT.\nInstead, we pre-train BERT using two unsupervised tasks, described in this section. This step\nis presented in the left part of Figure 1.\n\nTask #1: Masked LM\nIntuitively, it is reasonable to believe that a deep bidirectional model is\nstrictly more powerful than either a left-to-right\nmodel or the shallow concatenation of a left-toright and a right-to-left model.\nUnfortunately,\nstandard conditional language models can only be\ntrained left-to-right or right-to-left, since bidirectional conditioning would allow each word to indirectly \u201csee itself\u201d, and the model could trivially\npredict the target word in a multi-layered context.\n\nformer is often referred to as a \u201cTransformer encoder\u201d while\nthe left-context-only version is referred to as a \u201cTransformer\ndecoder\u201d since it can be used for text generation.\n\nIn order to train a deep bidirectional representation, we simply mask some percentage of the input\ntokens at random, and then predict those masked\ntokens. We refer to this procedure as a \u201cmasked\nLM\u201d (MLM), although it is often referred to as a\nCloze task in the literature (Taylor, 1953). In this\ncase, the final hidden vectors corresponding to the\nmask tokens are fed into an output softmax over\nthe vocabulary, as in a standard LM. In all of our\nexperiments, we mask 15% of all WordPiece tokens in each sequence at random. In contrast to\ndenoising auto-encoders (Vincent et al., 2008), we\nonly predict the masked words rather than reconstructing the entire input.\n\nAlthough this allows us to obtain a bidirectional pre-trained model, a downside is that we\nare creating a mismatch between pre-training and\nfine-tuning, since the [MASK] token does not appear during fine-tuning. To mitigate this, we do\nnot always replace \u201cmasked\u201d words with the actual [MASK] token. The training data generator\nchooses 15% of the token positions at random for\nprediction. If the i-th token is chosen, we replace\nthe i-th token with (1) the [MASK] token 80% of\nthe time (2) a random token 10% of the time (3)\nthe unchanged i-th token 10% of the time. Then,\nTi will be used to"
+      }
+    ],
+    "refused": false,
+    "warnings": []
+  }
+]

@@ -25,7 +25,10 @@ class OllamaClient:
         Small local models often omit IDs in free prose. Grammar-constrained JSON
         makes citation structure reliable, but does not prove semantic entailment.
         """
-        ids = list(dict.fromkeys(re.findall(r"SOURCE \[(S_[a-z0-9]+)\]", prompt)))
+        passages = dict(
+            re.findall(r"SOURCE \[(S_[a-z0-9]+)\][^\n]*\n(.*?)\nEND SOURCE", prompt, re.S)
+        )
+        ids = list(passages)
         if not ids:
             yield REFUSAL
             return
@@ -51,10 +54,10 @@ class OllamaClient:
         }
         transport = (
             "\nTRANSPORT FORMAT OVERRIDE: Return JSON with a sentences array, not prose. "
-            "Each item has text (one supported sentence WITHOUT brackets or citations) and "
+            "Each item has text (one EXACT verbatim excerpt copied from the source passage, not a paraphrase) and "
             "source_id (the supporting source ID). If evidence is insufficient, sentences is []. "
-            "Do not put the source ID in text. Example: "
-            '{"sentences":[{"text":"The optimizer was Adam.","source_id":"' + ids[0] + '"}]}'
+            "Do not put the source ID in text. Copy the shortest source excerpt that directly "
+            "answers the QUESTION. Copy source words exactly. Do not copy an unrelated excerpt."
         )
         try:
             parts: list[str] = []
@@ -64,6 +67,7 @@ class OllamaClient:
                 json={
                     "model": self.model,
                     "stream": True,
+                    "think": False,
                     "format": schema,
                     "options": {
                         "temperature": 0,
@@ -94,10 +98,21 @@ class OllamaClient:
                 raise ValueError("Invalid sentences")
             if not sentences:
                 yield REFUSAL
+            validated: list[str] = []
             for sentence in sentences:
                 if sentence["source_id"] not in ids or not isinstance(sentence["text"], str):
                     raise ValueError("Invalid source")
-                yield f"{sentence['text'].strip().rstrip('.')} [{sentence['source_id']}]. "
+                text = sentence["text"].strip().rstrip(".")
+
+                def normalize(value: str) -> str:
+                    return re.sub(r"\s+", " ", value).strip()
+
+                if not text or normalize(text) not in normalize(passages[sentence["source_id"]]):
+                    yield REFUSAL
+                    return
+                text = text.replace("[", "(").replace("]", ")")
+                validated.append(f"{text} [{sentence['source_id']}]. ")
+            yield from validated
         except (httpx.HTTPError, ValueError, KeyError, TypeError) as exc:
             raise ProviderError(
                 "Ollama request failed; check model, memory, connectivity and structured-output support"

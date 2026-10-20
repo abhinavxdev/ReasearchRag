@@ -8,6 +8,26 @@ from pypdf import PdfReader
 from researchrag.core.exceptions import ResearchError
 
 
+def page_text(page: pymupdf.Page) -> str:
+    """Read common two-column layouts column-wise, keeping spanning block bands."""
+    blocks = [b for b in page.get_text("blocks") if b[6] == 0 and b[4].strip()]  # type: ignore[no-untyped-call]
+    middle = page.rect.width / 2
+    left = [b for b in blocks if b[2] < middle + 12]
+    right = [b for b in blocks if b[0] > middle - 12]
+    if len(left) < 2 or len(right) < 2:
+        return str(page.get_text(sort=True))  # type: ignore[no-untyped-call]
+    spans = sorted([b for b in blocks if b not in left and b not in right], key=lambda b: b[1])
+    remaining = left + right
+    ordered = []
+    for span in spans:
+        band = [b for b in remaining if (b[1] + b[3]) / 2 < span[1]]
+        ordered.extend(sorted(band, key=lambda b: (b[0] >= middle - 12, b[1])))
+        remaining = [b for b in remaining if b not in band]
+        ordered.append(span)
+    ordered.extend(sorted(remaining, key=lambda b: (b[0] >= middle - 12, b[1])))
+    return "\n".join(str(b[4]) for b in ordered)
+
+
 def extract(path: Path, max_pages: int = 500) -> tuple[str, list[str]]:
     """Return metadata title and page texts, preserving 1-based page provenance."""
     try:
@@ -31,7 +51,7 @@ def extract(path: Path, max_pages: int = 500) -> tuple[str, list[str]]:
                     title = " ".join(
                         span["text"].strip() for span in spans if span["size"] >= largest - 0.5
                     )[:240]
-            pages = [page.get_text(sort=True) for page in doc]
+            pages = [page_text(page) for page in doc]
     except ResearchError:
         raise
     except Exception:
