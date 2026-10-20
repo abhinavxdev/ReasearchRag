@@ -22,6 +22,7 @@ def extract(path: Path, max_pages: int = 500) -> tuple[str, list[str]]:
                     span
                     for block in doc[0].get_text("dict")["blocks"]
                     for line in block.get("lines", [])
+                    if abs(line.get("dir", (1, 0))[1]) < 0.1
                     for span in line["spans"]
                     if len(span["text"].strip()) > 4
                 ]
