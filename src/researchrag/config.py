@@ -19,6 +19,9 @@ class Settings(BaseSettings):
     anthropic_model: str = "claude-sonnet-4-5"
     ollama_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.2:3b"
+    ollama_context_size: int = Field(default=8192, ge=2048, le=131072)
+    ollama_batch_size: int = Field(default=64, ge=1, le=512)
+    context_chars: int = Field(default=14000, ge=1000, le=50000)
     rerank: bool = False
     max_upload_mb: int = Field(default=25, ge=1, le=200)
     top_k: int = Field(default=6, ge=1, le=20)

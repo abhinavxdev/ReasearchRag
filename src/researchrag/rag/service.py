@@ -26,7 +26,7 @@ class AnswerService:
         confident = [hit for hit in hits if hit.dense_score >= self.settings.min_dense_score]
         if not confident:
             return Answer(answer=REFUSAL, refused=True)
-        context, sources = build_context(confident)
+        context, sources = build_context(confident, self.settings.context_chars)
         if not sources:
             return Answer(answer=REFUSAL, refused=True)
         prompt = f"CONTEXT\n{context}\n\nQUESTION\n{question}\n\nAnswer in one or two sentences. End EVERY sentence with a source ID copied from CONTEXT in square brackets. Answer:"
